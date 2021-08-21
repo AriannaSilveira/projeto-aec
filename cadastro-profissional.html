@@ -107,10 +107,13 @@
         <form action="#" method="POST">
 
             <label>Nome completo</label>
-            <input type="text" name="nome" />
+            <input type="text" name="nome" /> <br />
 
             <label>CPF</label>
-            <input type="text" name="cpf" />
+            <input type="text" name="cpf" /> <br />
+
+            <label>Data de nascimento</label>
+            <input type="date" name="data-de-nascimento" /> <br />
 
             <label>Cep:
                 <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" /></label><br />
@@ -123,15 +126,25 @@
                 <label>Estado:
                 <input name="uf" type="text" id="uf" size="2" /></label><br />
             
+         
+            <label>Número de telefone</label>
+            <input type="tel" name="telefone" /> <br />
 
-            <label>Sexo</label>
-            <select name="sexo">
-                <option value="2"></option>
-                <option value="1">Feminino</option>
-                <option value="2">Masculino</option>
+            <label>E-mail</label>
+            <input type="email" name="e-mail" /> <br />
+
+            <label>Profissão</label>
+            <select name="profissao">
+                <option value="0"></option>
+                <option value="1">Desenvolvedor Júnior</option>
+                <option value="2">Desenvolvedor Sênior</option>
+                <option value="3">Analista de Sistemas</option>
 
             </select>
+
         </form>
+
+          
 
     </main>
 
