@@ -1,0 +1,203 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <div id="login">
+        <form>
+            <div class="form-group row">
+                <label for="text" class="col-4 col-form-label"></label>
+                <div class="col-8">
+                    <input id="text" name="text" placeholder="E-mail" type="text" class="form-control"
+                        required="required">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="senha" class="col-4 col-form-label"></label>
+                <div class="col-8">
+                    <input id="senha" name="senha" placeholder="Senha" type="text" class="form-control"
+                        required="required">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="select" class="col-4 col-form-label"></label>
+                <div class="col-8">
+                    <select id="select" name="select" class="custom-select" required="required">
+                        <option value="null">Escolha o tipo de cadastro</option>
+                        <option value="empresa">Empresa</option>
+                        <option value="profissional">Profissional</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Cadastro Profissional -->
+            <div id="formProfissional">
+
+                <div class="form-group row">
+                    <label for="nomeProfissional" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="nomeProfissional" name="nomeProfissional" placeholder="Nome" type="text"
+                            class="form-control" required="required">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="cpf" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="cpf" name="cpf" placeholder="CPF" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="cep" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="cep" name="cep" placeholder="CEP" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="rua" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="rua" name="rua" placeholder="Rua" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="numero" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="numero" name="numero" placeholder="Número" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bairro" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="bairro" name="bairro" placeholder="Bairro" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cidade" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="cidade" name="cidade" placeholder="Cidade" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Estado" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="Estado" name="Estado" placeholder="Estado" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telefone" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="telefone" name="telefone" placeholder="Telefone" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-4 col-form-label" for="profissao"></label>
+                    <div class="col-8">
+                        <select id="profissao" name="profissao" class="custom-select" required="required">
+                            <option value="null">Selecione sua profissão</option>
+                            <option value="estudante">Estudante</option>
+                            <option value="programador">Programador</option>
+                            <option value="atendente">Atendente</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cadastro Empresa -->
+            <div id="formEmpresa">
+
+
+                <div class="form-group row">
+                    <label for="nomeEmpresa" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="nomeEmpresa" name="nomeEmpresa" placeholder="Nome da empresa" type="text"
+                            class="form-control" required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cnpj" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="cnpj" name="cnpj" placeholder="CNPJ" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cep" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="cep" name="cep" placeholder="CEP" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="rua" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="rua" name="rua" placeholder="Rua" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="numero" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="numero" name="numero" placeholder="Número" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bairro" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="bairro" name="bairro" placeholder="Bairro" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cidade" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="cidade" name="cidade" placeholder="Cidade" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Estado" class="col-4 col-form-label"></label>
+                    <div class="col-8">
+                        <input id="Estado" name="Estado" placeholder="Estado" type="text" class="form-control"
+                            required="required">
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Botão de cadastrar -->
+            <div class="form-group row">
+                <div class="offset-4 col-8">
+                    <button name="submit" type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
