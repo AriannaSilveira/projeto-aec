@@ -37,40 +37,43 @@ namespace projetoGamaAcademy.Models
         [Required]
         public string Rua { get; set; }
 
-        [Column("numero", TypeName = "int")]
+        [Column("numero", TypeName = "varchar")]
         [MaxLength(5)]
         [Required]
-        public int Numero { get; set; }
+        public string Numero { get; set; }
 
         [Column("bairro", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(30)]
         [Required]
         public string Bairro { get; set; }
 
         [Column("cidade", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(50)]
         [Required]
         public string Cidade { get; set; }
 
         [Column("estado", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(2)]
         [Required]
         public string Estado { get; set; }
 
         [Column("email", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(20)]
         [Required]
         public string Email { get; set; }
 
         [Column("senha", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(15)]
         [Required]
         public string Senha { get; set; }
 
-        [Column("data_nascimento", TypeName = "date")]
-        [MaxLength(5)]
+        
+
+        [Column("data_nascimento")]
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DataNascimento { get; set; }
+      
 
         
         [Column("telefone", TypeName = "varchar")]
@@ -87,7 +90,7 @@ namespace projetoGamaAcademy.Models
         [Required]
         public int IdVaga { get; set; }
 
-        public ICollection<Candidato> Candidatos { get; set; }
+        // public ICollection<Candidato> Candidatos { get; set; }
 
     }
 }

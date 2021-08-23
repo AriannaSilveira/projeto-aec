@@ -41,6 +41,6 @@ namespace projetoGamaAcademy.Models
         [Required]
         public int Disponivel { get; set; }
 
-        //public ICollection<Vaga> Vagas { get; set; }
+        // public ICollection<Vaga> Vagas { get; set; }
     }
 }

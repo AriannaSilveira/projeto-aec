@@ -35,36 +35,36 @@ namespace projetoGamaAcademy.Models
         [Required]
         public string Rua { get; set; }
 
-        [Column("numero", TypeName = "int")]
+        [Column("numero", TypeName = "varchar")]
         [MaxLength(5)]
         [Required]
-        public int Numero { get; set; }
+        public string Numero { get; set; }
 
         [Column("bairro", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(50)]
         [Required]
         public string Bairro { get; set; }
 
         [Column("cidade", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(50)]
         [Required]
         public string Cidade { get; set; }
 
         [Column("estado", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(2)]
         [Required]
         public string Estado { get; set; }
 
         [Column("email", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(100)]
         [Required]
         public string Email { get; set; }
 
         [Column("senha", TypeName = "varchar")]
-        [MaxLength(5)]
+        [MaxLength(10)]
         [Required]
         public string Senha { get; set; }
 
-        public ICollection<Empresa> Empresas { get; set; }
+        // public ICollection<Empresa> Empresas { get; }
     }
 }

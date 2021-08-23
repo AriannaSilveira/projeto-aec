@@ -29,8 +29,8 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("bairro");
 
                     b.Property<int?>("CandidatoId")
@@ -44,8 +44,8 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Cidade")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("cidade");
 
                     b.Property<string>("Cpf")
@@ -55,20 +55,19 @@ namespace projetoGamaAcademy.Migrations
                         .HasColumnName("cpf");
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasMaxLength(5)
-                        .HasColumnType("date")
+                        .HasColumnType("datetime2")
                         .HasColumnName("data_nascimento");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
                         .HasColumnName("email");
 
                     b.Property<string>("Estado")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)")
                         .HasColumnName("estado");
 
                     b.Property<string>("Formacao")
@@ -88,9 +87,10 @@ namespace projetoGamaAcademy.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nome");
 
-                    b.Property<int>("Numero")
+                    b.Property<string>("Numero")
+                        .IsRequired()
                         .HasMaxLength(5)
-                        .HasColumnType("int")
+                        .HasColumnType("varchar(5)")
                         .HasColumnName("numero");
 
                     b.Property<string>("Rua")
@@ -101,8 +101,8 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)")
                         .HasColumnName("senha");
 
                     b.Property<string>("Telefone")
@@ -128,8 +128,8 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("bairro");
 
                     b.Property<string>("Cep")
@@ -140,8 +140,8 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Cidade")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("cidade");
 
                     b.Property<string>("Cpnj")
@@ -152,17 +152,14 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("email");
-
-                    b.Property<int?>("EmpresaId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Estado")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)")
                         .HasColumnName("estado");
 
                     b.Property<string>("Nome")
@@ -171,9 +168,10 @@ namespace projetoGamaAcademy.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nome");
 
-                    b.Property<int>("Numero")
+                    b.Property<string>("Numero")
+                        .IsRequired()
                         .HasMaxLength(5)
-                        .HasColumnType("int")
+                        .HasColumnType("varchar(5)")
                         .HasColumnName("numero");
 
                     b.Property<string>("Rua")
@@ -184,13 +182,11 @@ namespace projetoGamaAcademy.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)")
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
                         .HasColumnName("senha");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmpresaId");
 
                     b.ToTable("empresas");
                 });
@@ -227,7 +223,12 @@ namespace projetoGamaAcademy.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nome");
 
+                    b.Property<int?>("VagaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VagaId");
 
                     b.ToTable("vagas");
                 });
@@ -239,11 +240,11 @@ namespace projetoGamaAcademy.Migrations
                         .HasForeignKey("CandidatoId");
                 });
 
-            modelBuilder.Entity("projetoGamaAcademy.Models.Empresa", b =>
+            modelBuilder.Entity("projetoGamaAcademy.Models.Vaga", b =>
                 {
-                    b.HasOne("projetoGamaAcademy.Models.Empresa", null)
-                        .WithMany("Empresas")
-                        .HasForeignKey("EmpresaId");
+                    b.HasOne("projetoGamaAcademy.Models.Vaga", null)
+                        .WithMany("Vagas")
+                        .HasForeignKey("VagaId");
                 });
 
             modelBuilder.Entity("projetoGamaAcademy.Models.Candidato", b =>
@@ -251,9 +252,9 @@ namespace projetoGamaAcademy.Migrations
                     b.Navigation("Candidatos");
                 });
 
-            modelBuilder.Entity("projetoGamaAcademy.Models.Empresa", b =>
+            modelBuilder.Entity("projetoGamaAcademy.Models.Vaga", b =>
                 {
-                    b.Navigation("Empresas");
+                    b.Navigation("Vagas");
                 });
 #pragma warning restore 612, 618
         }

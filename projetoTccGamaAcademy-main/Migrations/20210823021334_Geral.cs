@@ -17,13 +17,13 @@ namespace projetoGamaAcademy.Migrations
                     cpf = table.Column<string>(type: "varchar(14)", maxLength: 14, nullable: false),
                     cep = table.Column<string>(type: "varchar(9)", maxLength: 9, nullable: false),
                     rua = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    numero = table.Column<int>(type: "int", maxLength: 5, nullable: false),
-                    bairro = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    cidade = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    estado = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    email = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    senha = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    data_nascimento = table.Column<DateTime>(type: "date", maxLength: 5, nullable: false),
+                    numero = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
+                    bairro = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
+                    cidade = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    estado = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false),
+                    email = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    senha = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
+                    data_nascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     telefone = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     formacao = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     id_vaga = table.Column<string>(type: "varchar(64)", nullable: false),
@@ -50,23 +50,16 @@ namespace projetoGamaAcademy.Migrations
                     cpnj = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
                     cep = table.Column<string>(type: "varchar(9)", maxLength: 9, nullable: false),
                     rua = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    numero = table.Column<int>(type: "int", maxLength: 5, nullable: false),
-                    bairro = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    cidade = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    estado = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    email = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    senha = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
-                    EmpresaId = table.Column<int>(type: "int", nullable: true)
+                    numero = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
+                    bairro = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    cidade = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    estado = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: false),
+                    email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    senha = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_empresas", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_empresas_empresas_EmpresaId",
-                        column: x => x.EmpresaId,
-                        principalTable: "empresas",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,11 +72,18 @@ namespace projetoGamaAcademy.Migrations
                     descricao = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: false),
                     jornada = table.Column<int>(type: "int", nullable: false),
                     id_empresa = table.Column<int>(type: "int", nullable: false),
-                    disponivel = table.Column<int>(type: "int", nullable: false)
+                    disponivel = table.Column<int>(type: "int", nullable: false),
+                    VagaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_vagas", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_vagas_vagas_VagaId",
+                        column: x => x.VagaId,
+                        principalTable: "vagas",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -92,9 +92,9 @@ namespace projetoGamaAcademy.Migrations
                 column: "CandidatoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_empresas_EmpresaId",
-                table: "empresas",
-                column: "EmpresaId");
+                name: "IX_vagas_VagaId",
+                table: "vagas",
+                column: "VagaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
