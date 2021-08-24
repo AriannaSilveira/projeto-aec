@@ -1,0 +1,20 @@
+✓ CEP
+✓ Não ter duas empresas com mesmo nome, CNPJ
+✓ cookies para empresa
+✓ Perfil do candidato/empresa
+
+- Direcionar as paginas de cadastro
+
+✘ formulário de vagas
+    "id": 0,
+    "nome": "string",
+    "descricao": "string",
+    "jornada": 0,
+  "idEmpresa": 0,
+  "disponivel": 0
+
+✘ Direcionar o "inscrever-se" na vaga
+
+✘ Alterar CNPJ no model de empresas
+✘ upload de pdf
+✘ consulta dos curriculos já cadastrados

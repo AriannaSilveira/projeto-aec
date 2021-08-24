@@ -1,0 +1,259 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JobsNet</title>
+    <meta name="description" content="">
+    <!---meta name="viewport" content="width=device-width, initial-scale=1"---->
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="../icon.png">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+    <script src="../js/configs.js"></script>
+    <script src="scriptsCadastro.js"></script>
+
+    <!-- Place favicon.ico in the root directory -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../icons/icomoon.css">
+    <link rel="stylesheet" href="../icons/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../css/plugins.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../dist/css/swiper.min.css">
+
+    <!-- Adicionando Javascript -->
+
+    <!--Para o profissional-->
+
+    <script>
+        /*
+              $(document).ready(function () {
+        
+                  function limpa_formulário_cep() {
+                      // Limpa valores do formulário de cep.
+                      $("#ruaCandidato").val("");
+                      $("#bairroCandidato").val("");
+                      $("#cidadeCandidato").val("");
+                      $("#ufCandidato").val("");
+                  }
+        
+                  //Quando o campo cep perde o foco.
+                  $("#cepCandidato").blur(function () {
+        
+                      //Nova variável "cep" somente com dígitos.
+                      var cepCandidato = $(this).val().replace(/\D/g, '');
+        
+                      //Verifica se campo cep possui valor informado.
+                      if (cepCandidato != "") {
+        
+                          //Expressão regular para validar o CEP.
+                          var validacep = /^[0-9]{8}$/;
+        
+                          //Valida o formato do CEP.
+                          if (validacep.test(cepCandidato)) {
+        
+                              //Preenche os campos com "..." enquanto consulta webservice.
+                              $("#ruaCandidato").val("...");
+                              $("#bairroCandidato").val("...");
+                              $("#cidadeCandidato").val("...");
+                              $("#ufCandidato").val("...");
+        
+                              //Consulta o webservice viacep.com.br/
+                              $.getJSON("https://viacep.com.br/ws/" + cepP + "/json/?callback=?", function (dados) {
+        
+                                  if (!("erro" in dados)) {
+                                      //Atualiza os campos com os valores da consulta.
+                                      $("#ruaCandidato").val(dados.logradouro);
+                                      $("#bairroCandidato").val(dados.bairro);
+                                      $("#cidadeCandidato").val(dados.localidade);
+                                      $("#ufCandidato").val(dados.uf);
+                                  } //end if.
+                                  else {
+                                      //CEP pesquisado não foi encontrado.
+                                      limpa_formulário_cep();
+                                      alert("CEP não encontrado.");
+                                  }
+                              });
+                          } //end if.
+                          else {
+                              //cep é inválido.
+                              limpa_formulário_cep();
+                              alert("Formato de CEP inválido.");
+                          }
+                      } //end if.
+                      else {
+                          //cep sem valor, limpa formulário.
+                          limpa_formulário_cep();
+                      }
+                  });
+              });*/
+
+    </script>
+
+    <!--Para a empresa-->
+    <script>
+
+        /*$(document).ready(function () {
+      
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#ruaEmpresa").val("");
+                $("#bairroEmpresa").val("");
+                $("#cidadeEmpresa").val("");
+                $("#ufEmpresa").val("");
+            }
+      
+            //Quando o campo cep perde o foco.
+            $("#cepEmpresa").blur(function () {
+      
+                //Nova variável "cep" somente com dígitos.
+                var cepEmpresa = $(this).val().replace(/\D/g, '');
+      
+                //Verifica se campo cep possui valor informado.
+                if (cepEmpresa != "") {
+      
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+      
+                    //Valida o formato do CEP.
+                    if (validacep.test(cepEmpresa)) {
+      
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#ruaEmpresa").val("...");
+                        $("#bairroEmpresa").val("...");
+                        $("#cidadeEmpresa").val("...");
+                        $("#ufEmpresa").val("...");
+      
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/" + cepEmpresa + "/json/?callback=?", function (dados) {
+      
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#ruaEmpresa").val(dados.logradouro);
+                                $("#bairroEmpresa").val(dados.bairro);
+                                $("#cidadeEmpresa").val(dados.localidade);
+                                $("#ufEmpresa").val(dados.uf);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });*/
+
+    </script>
+</head>
+
+<body>
+    <!-- Page Content START -->
+    <div class="page-content">
+        <!-- Main Nav START -->
+        <nav id="main-nav" class="main-nav fixed">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="nav-header d-flex justify-content-between align-items-center">
+                            <div style="font-size: 28px; font-weight: bold;">JobsNet</div>
+                            <!--<a href="index.html" class="logo" title="JobsNet">
+                        <img class="logo-img" src="../img/logo.png" alt="JobsNet">
+                        
+                        <img class="alt-logo-img" src="../img/logo-alt.png" alt="JobsNet">
+                        </a>-->
+                        </div>
+                        <div class="nav-wrap">
+                            <ul id="nav" class="nav-wrap__list menu">
+                                <li class="current"><a href="/" title="Vagas">Vagas</a></li>
+                                <li><a href="/about.html" title="Quem somos?">Quem somos?</a></li>
+                                <li><a href="/contacts.html" title="Grupo">Grupo</a></li>
+                            </ul>
+                            <div class="riglt-floats-xs">
+                                <a href="../login/" class="btn-startgames"><span class="ic-sx21"></span>Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <form>
+
+
+            <div id="login" class="formLogin">
+                <form>
+                    <span style='font-weight: bold;'> CADASTRE-SE </span>
+                    <div><input id="email" name="email" placeholder="E-mail" type="email" required="required"></div>
+                    <div><input id="senha" name="senha" placeholder="Senha" type="password" required="required"></div>
+                    <div><input id="senhaRepetida" name="senhaRepetida" placeholder="Repita a senha" type="password"
+                            required="required" onkeyup="javascript: checkSenhas();"></div>
+                    <span id="alertaSenhas"></span>
+
+                    <div><select id="select" name="select" required="required">
+                            <option value="null">Escolha o tipo de cadastro</option>
+                            <option value="empresa">Empresa</option>
+                            <option value="profissional">Profissional</option>
+                        </select></div>
+
+
+                    <div id="form">
+
+                    </div>
+
+
+
+                    <input style="margin-top: 20px; width: 100%" name="btnRegister" id="btnRegister"
+                        class="btn btn-primary" value="Cadastrar"></input>
+                </form>
+            </div>
+
+
+            <!-- Footer END -->
+    </div>
+    <!-- Page Content END -->
+    <script src="/dist/js/swiper.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
+            hashNavigation: {
+                watchState: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/circle-progress.js"></script>
+    <script src="/js/examples.js"></script>
+    <script src="/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
