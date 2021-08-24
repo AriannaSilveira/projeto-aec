@@ -58,7 +58,7 @@ namespace projetoGamaAcademy.Models
         public string Estado { get; set; }
 
         [Column("email", TypeName = "varchar")]
-        [MaxLength(20)]
+        [MaxLength(100)]
         [Required]
         public string Email { get; set; }
 
