@@ -90,6 +90,11 @@ namespace projetoGamaAcademy.Models
         [Required]
         public int IdVaga { get; set; }
 
+        
+        // public virtual ICollection<File> Files { get; set; }
+        
+        // public List<Curriculo> Curriculos { get; internal set; }
+
         // public ICollection<Candidato> Candidatos { get; set; }
 
     }

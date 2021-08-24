@@ -26,18 +26,11 @@ namespace projetoGamaAcademy.Migrations
                     data_nascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     telefone = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     formacao = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    id_vaga = table.Column<string>(type: "varchar(64)", nullable: false),
-                    CandidatoId = table.Column<int>(type: "int", nullable: true)
+                    id_vaga = table.Column<string>(type: "varchar(64)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_candidatos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_candidatos_candidatos_CandidatoId",
-                        column: x => x.CandidatoId,
-                        principalTable: "candidatos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,29 +65,12 @@ namespace projetoGamaAcademy.Migrations
                     descricao = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: false),
                     jornada = table.Column<int>(type: "int", nullable: false),
                     id_empresa = table.Column<int>(type: "int", nullable: false),
-                    disponivel = table.Column<int>(type: "int", nullable: false),
-                    VagaId = table.Column<int>(type: "int", nullable: true)
+                    disponivel = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_vagas", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_vagas_vagas_VagaId",
-                        column: x => x.VagaId,
-                        principalTable: "vagas",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_candidatos_CandidatoId",
-                table: "candidatos",
-                column: "CandidatoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_vagas_VagaId",
-                table: "vagas",
-                column: "VagaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

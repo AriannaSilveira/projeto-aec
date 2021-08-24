@@ -17,6 +17,7 @@ namespace projetoGamaAcademy.Apresentacao
                 "/candidatos",
                 "/vagas",
                 "/empresas",
+                "/curriculos",
                 "/swagger"
             }; 
         }

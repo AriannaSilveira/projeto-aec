@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using projetoGamaAcademy.Models;
 using projetoGamaAcademy.Servicos;
 
+
 namespace projetoGamaAcademy.Controllers
 {
     [ApiController]
@@ -31,11 +32,49 @@ namespace projetoGamaAcademy.Controllers
 
         [HttpPost]
         [Route("/candidatos")]
-        public async Task<IActionResult> Create([Bind("Id,Nome,CPF,Nascimento,Telefone,Email,Logradouro,Numero,Bairro,Cidade,Estado,VagaId")] Candidato candidato)
+        public async Task<IActionResult> Create(Candidato candidato)
         {
-            _context.Add(candidato);
-            await _context.SaveChangesAsync();
-            return StatusCode(201, candidato);
+            var logarUsuario = (await _context.Candidatos.Where(v => v.Email == candidato.Email && v.Senha == candidato.Senha).CountAsync()) > 0;
+
+            if (!logarUsuario)
+            {
+                return StatusCode(406, new { Message = "E-mail e/ou senha incorretos." });
+            }
+
+            else
+            {
+                return StatusCode(201, candidato);
+
+            }
+
+            // _context.Add(candidato);
+            // await _context.SaveChangesAsync();
+            // return StatusCode(201, candidato);
+        }
+
+        
+        [HttpGet]
+        [Route("/candidatos/{email}/{senha}")]
+        public async Task<IActionResult> Get(string email, string senha)
+        
+        {
+            var logarUsuario = (await _context.Candidatos.Where(v => v.Email == email && v.Senha == senha).CountAsync()) > 0;
+
+            if (!logarUsuario)
+            {
+                return StatusCode(406, new { Message = "E-mail e/ou senha incorretos." });
+            }
+
+            else
+            {
+                //return StatusCode(201, candidato);
+                return StatusCode(201, _context.Candidatos.Where(v => v.Email == email).First());
+
+            }
+
+            // _context.Add(candidato);
+            // await _context.SaveChangesAsync();
+            // return StatusCode(201, candidato);
         }
 
         [HttpPut]

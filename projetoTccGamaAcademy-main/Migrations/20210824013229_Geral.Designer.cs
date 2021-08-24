@@ -10,7 +10,7 @@ using projetoGamaAcademy.Servicos;
 namespace projetoGamaAcademy.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    [Migration("20210823021334_Geral")]
+    [Migration("20210824013229_Geral")]
     partial class Geral
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,6 @@ namespace projetoGamaAcademy.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("varchar(30)")
                         .HasColumnName("bairro");
-
-                    b.Property<int?>("CandidatoId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Cep")
                         .IsRequired()
@@ -114,8 +111,6 @@ namespace projetoGamaAcademy.Migrations
                         .HasColumnName("telefone");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CandidatoId");
 
                     b.ToTable("candidatos");
                 });
@@ -225,38 +220,9 @@ namespace projetoGamaAcademy.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("nome");
 
-                    b.Property<int?>("VagaId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("VagaId");
-
                     b.ToTable("vagas");
-                });
-
-            modelBuilder.Entity("projetoGamaAcademy.Models.Candidato", b =>
-                {
-                    b.HasOne("projetoGamaAcademy.Models.Candidato", null)
-                        .WithMany("Candidatos")
-                        .HasForeignKey("CandidatoId");
-                });
-
-            modelBuilder.Entity("projetoGamaAcademy.Models.Vaga", b =>
-                {
-                    b.HasOne("projetoGamaAcademy.Models.Vaga", null)
-                        .WithMany("Vagas")
-                        .HasForeignKey("VagaId");
-                });
-
-            modelBuilder.Entity("projetoGamaAcademy.Models.Candidato", b =>
-                {
-                    b.Navigation("Candidatos");
-                });
-
-            modelBuilder.Entity("projetoGamaAcademy.Models.Vaga", b =>
-                {
-                    b.Navigation("Vagas");
                 });
 #pragma warning restore 612, 618
         }
