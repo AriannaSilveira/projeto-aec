@@ -1,34 +1,54 @@
-var endpointApi = 'https://localhost:5501';
+var endpointApi = 'https://localhost:5001';
 
 $(document).ready(function () {
 
-    $('#btnRegister').click(function () {
-        console.log($('#select').val());
+    function getFormData($form){
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+    
+        $.map(unindexed_array, function(n, i){
+            indexed_array[n['name']] = n['value'];
+        });
+    
+        return indexed_array;
+    }
 
+    $('#btnRegister').click(function () {
+        //console.log($('form').serialize());
+            var $form = $("form");
+            var dataJson = getFormData($form);
         if ($('#select').val() == 'empresa') {
-            $.ajax({
-                url: endpointApi + '/empresa',
+             $.ajax({
+                url: endpointApi + '/empresas/',
                 type: 'PUT',
-                data: $('form').serialize(),
+                data: JSON.stringify(dataJson),
                 success: function (result) {
-                    console.log(result);
+                    console.log("Cadastrado com sucesso.");
+                    window.location.href = "../";
                 },
                 error: function (request, status, error) {
-                    alert(request.responseText);
+                    console.log(request.responseText);
+                },
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
                 }
             });
         }
 
         if ($('#select').val() == 'profissional') {
             $.ajax({
-                url: endpointApi + '/profissional',
+                url: endpointApi + '/candidatos/',
                 type: 'PUT',
-                data: $('form').serialize(),
+                data: JSON.stringify(dataJson),
                 success: function (result) {
-                    console.log(result);
+                    console.log("Cadastrado com sucesso.");
+                    window.location.href = "../";
                 },
                 error: function (request, status, error) {
-                    alert(request.responseText);
+                    console.log(request.responseText);
+                },
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
                 }
             });
         }
@@ -53,7 +73,7 @@ $(document).ready(function () {
             //$('*[id*=Empresa]').prop("required", true);
             //$('*[id*=Profissional]').prop("required", false);
 
-            html = '               <div id="formEmpresa">                  <div><input id="nomeEmpresa" name="nomeEmpresa" placeholder="Nome da empresa" type="text"                        required="required"></div>                  <div><input id="cnpjEmpresa" name="cnpjEmpresa" placeholder="CNPJ" type="text"></div>                  <div><input id="cepEmpresa" name="cepEmpresa" placeholder="CEP" type="text" value="" size="10"                        maxlength="9" required="required" onkeydown="javascript: fMasc( this, mCEP );" maxlength="9">                  </div>                  <div><input id="ruaEmpresa" name="ruaEmpresa" placeholder="Rua" type="text" size="60"                        required="required"></div>                  <div><input id="numeroEmpresa" name="numeroEmpresa" placeholder="Número" type="text"                        required="required"></div>                  <div><input id="bairroEmpresa" name="bairroEmpresa" placeholder="Bairro" type="text" size="40"                        required="required">                  </div>                  <div><input id="cidadeEmpresa" name="cidadeEmpresa" placeholder="Cidade" type="text" size="40"                        required="required">                  </div>                  <div><input id="ufEmpresa" name="ufEmpresa" placeholder="Estado" type="text" size="2"                        required="required"></div>               </div>';
+            html = '<div id="formEmpresa"> <div><input id="nome" name="nome" placeholder="Nome da empresa" type="text" required="required"></div> <div><input id="cpnj" name="cpnj" placeholder="CNPJ" type="text"></div> <div><input id="cep" name="cep" placeholder="CEP" type="text" value="" size="10" maxlength="9" required="required" onkeydown="javascript: fMasc( this, mCEP );" maxlength="9"> </div> <div><input id="rua" name="rua" placeholder="Rua" type="text" size="60" required="required"></div> <div><input id="numero" name="numero" placeholder="Número" type="text" required="required"></div> <div><input id="bairro" name="bairro" placeholder="Bairro" type="text" size="40" required="required"> </div> <div><input id="cidade" name="cidade" placeholder="Cidade" type="text" size="40" required="required"> </div> <div><input id="estado" name="estado" placeholder="Estado" type="text" size="2" required="required"></div></div>';
 
         } else if ($(this).val() == "profissional") {
 
@@ -64,8 +84,7 @@ $(document).ready(function () {
             //$('*[id*=Empresa]').prop("required", false);
             //$('*[id*=Profissional]').prop("required", true);
 
-            html = '<div id="formProfissional">                  <div><input id="nomeProfissional" name="nomeProfissional" placeholder="Nome" type="text"                        required="required"></div>                  <div><input id="cpfProfissional" name="cpfProfissional" placeholder="CPF" type="text"                        required="required" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14"></div>                  <div><input id="cepProfissional" name="cepProfissional" placeholder="CEP" type="text" value=""                        size="10" maxlength="9" required="required" onkeydown="javascript: fMasc( this, mCEP );"                        maxlength="9"></div>                  <div><input id="ruaProfissional" name="ruaProfissional" placeholder="Rua" type="text" size="60"                        required="required"></div>                  <div><input id="numeroProfissional" name="numeroProfissional" placeholder="Número" type="text"                        required="required"></div>                  <div><input id="bairroProfissional" name="bairroProfissional" placeholder="Bairro" type="text"                        size="40" required="required">                  </div>                  <div><input id="cidadeProfissional" name="cidadeProfissional" placeholder="Cidade" type="text"                        size="40" required="required">                  </div>                  <div><input id="ufProfissional" name="ufProfissional" placeholder="Estado" type="text" size="2"                        required="required"></div>                  <div><input id="telefoneProfissional" name="telefoneProfissional"                        placeholder="Telefone: (DDD) + Número" type="text" required="required"                        onkeydown="javascript: fMasc( this, mTelefone );" maxlength="17">                  </div>                  <div><select id="profissaoProfissional" name="profissaoProfissional" required="required">                        <option value="null">Selecione sua profissão</option>                        <option value="estudante">Estudante</option>                        <option value="programador">Programador</option>                        <option value="atendente">Atendente</option>                        <option value="outro">Outro</option>                     </select></div>               </div>';
-
+            html = '<div id="formProfissional"> <div><input id="nome" name="nome" placeholder="Nome" type="text" required="required"></div> <div><input id="cpf" name="cpf" placeholder="CPF" type="text" required="required" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14"></div> <div><input id="cep" name="cep" placeholder="CEP" type="text" value="" size="10" maxlength="9" required="required" onkeydown="javascript: fMasc( this, mCEP );" maxlength="9"></div> <div><input id="rua" name="rua" placeholder="Rua" type="text" size="60" required="required"></div> <div><input id="numero name="numero" placeholder="Número" type="text" required="required"></div> <div><input id="bairro" name="bairro" placeholder="Bairro" type="text" size="40" required="required"> </div> <div><input id="cidade" name="cidade" placeholder="Cidade" type="text" size="40" required="required"> </div> <div><input id="estado" name="estado" placeholder="Estado" type="text" size="2" required="required"></div> <div><input id="telefone" name="telefone" placeholder="Telefone: (DDD) + Número" type="text" required="required" onkeydown="javascript: fMasc( this, mTelefone );" maxlength="17"> </div> <div> <select id="formacao" name="formacao" required="required"> <option value="null">Selecione sua profissão</option> <option value="estudante">Estudante</option> <option value="programador">Programador</option> <option value="atendente">Atendente</option> <option value="outro">Outro</option> </select> </div></div>';
         } else {
             $('#formProfissional').hide(100);
             $('#formEmpresa').hide(100);
@@ -73,20 +92,24 @@ $(document).ready(function () {
         }
 
         document.querySelector("#form").innerHTML = html;
-        $('[id*="_' + tipoSelecionado + '_"]').removeAttr('required');
+        $('#cep').on('keyup', function () {
+            if (this.value.length == 9) {
+                carregarEndereco();
+            }
+        });
+        //$('[id*="_' + tipoSelecionado + '_"]').removeAttr('required');
     });
 
-    function limpa_formulário_cep(id) {
+    function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
-        $("#rua" + id).val("");
-        $("#bairro" + id).val("");
-        $("#cidade" + id).val("");
-        $("#uf" + id).val("");
-        $("#ibge" + id).val("");
+        $("#rua").val("");
+        $("#bairro").val("");
+        $("#cidade").val("");
+        $("#estado").val("");
     }
 
-    function carregarEndereco(id) {
-        var cep = $("#cep" + id).val().replace(/\D/g, '');
+    function carregarEndereco() {
+        var cep = $("#cep").val().replace(/\D/g, '');
 
         //Verifica se campo cep possui valor informado.
         if (cep != "") {
@@ -98,34 +121,32 @@ $(document).ready(function () {
             if (validacep.test(cep)) {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
-                $("#rua" + id).val("...");
-                $("#bairro" + id).val("...");
-                $("#cidade" + id).val("...");
-                $("#uf" + id).val("...");
-                $("#ibge" + id).val("...");
+                $("#rua").val("...");
+                $("#bairro").val("...");
+                $("#cidade").val("...");
+                $("#estado").val("...");
 
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
 
                     if (!("erro" in dados)) {
                         //Atualiza os campos com os valores da consulta.
-                        $("#rua" + id).val(dados.logradouro);
-                        $("#bairro" + id).val(dados.bairro);
-                        $("#cidade" + id).val(dados.localidade);
-                        $("#uf" + id).val(dados.uf);
-                        $("#ibge" + id).val(dados.ibge);
+                        $("#rua").val(dados.logradouro);
+                        $("#bairro").val(dados.bairro);
+                        $("#cidade").val(dados.localidade);
+                        $("#estado").val(dados.uf);
                     } //end if.
                     else {
                         //CEP pesquisado não foi encontrado.
                         limpa_formulário_cep();
-                        alert("CEP não encontrado.");
+                        //alert("CEP não encontrado.");
                     }
                 });
             } //end if.
             else {
                 //cep é inválido.
                 limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
+                //alert("Formato de CEP inválido.");
             }
         } //end if.
         else {
@@ -147,15 +168,9 @@ $(document).ready(function () {
     //     });
     // });
 
-    $('#cepEmpresa').on('keyup', function () {
+    $('#cep').on('keyup', function () {
         if (this.value.length == 9) {
-            carregarEndereco('Empresa');
-        }
-    });
-
-    $('#cepProfissional').on('keyup', function () {
-        if (this.value.length == 9) {
-            carregarEndereco('Profissional');
+            carregarEndereco();
         }
     });
 
